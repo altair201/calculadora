@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>calculadora version 1</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+    <main class="container">
+        <div class="container_display">
+            <div class="subdisplay" id="display"></div>
+            <div class="inputnunmber">
+                <input type="number" class="entri" id="num1">
+                <div class="oper" id="operando"></div>
+                <input type="number" class="entri" id="num2">
+            </div>
+        </div>
+        <div class="container_btns">
+            <button class="btn" id="7">7</button>
+            <button class="btn" id="8">8</button>
+            <button class="btn" id="9">9</button>
+            <button class="btn btn-edit" id="div">/</button>
+            <button class="btn" id="4">4</button>
+            <button class="btn" id="5">5</button>
+            <button class="btn" id="6">6</button>
+            <button class="btn btn-edit" id="mul">*</button>
+            <button class="btn" id="1">1</button>
+            <button class="btn" id="2">2</button>
+            <button class="btn" id="3">3</button>
+            <button class="btn btn-edit" id="rest">-</button>
+            <button class="btn" id="0">0</button>
+            <button class="btn btn-edit" id="limpiar">C</button>
+            <button class="btn btn-edit" id="igual">=</button>
+            <button class="btn btn-edit" id="suma">+</button>
+        </div>
+    </main>
+    <script src="./main.js"></script>
 </body>
 </html>
