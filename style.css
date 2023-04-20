@@ -19,7 +19,7 @@ body{
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    background-color: rgb(0, 41, 152);
+    background-color: rgba(0, 0, 0, 0.817);
     border-radius: 15px;
     box-shadow: 5px 10px 30px 10px;
 }
@@ -46,7 +46,7 @@ body{
     gap: 30px;
 }
 .entri{
-    width: 70px;
+    width: 80px;
     height: 50px;
     font-size: 1.5rem;
     text-align: center;
@@ -76,13 +76,18 @@ body{
     width: 50px;
     font-size: 1.5rem;
     border-radius: 15px;
-    background-color: rgb(74, 74, 253);
+    background-color: rgb(0, 255, 4);
     transition: 0.8s ease;
-    box-shadow: 2px 3px 10px 3px rgb(62, 70, 101);
+    color: aliceblue;
 }
 .btn-edit{
-    background-color: aqua;
+    background-color: rgb(255, 0, 0);
 }
 .btn:hover{
     background-color: rgb(0, 247, 255);
+    box-shadow: 2px 3px 10px 3px rgb(51, 91, 248);
+}
+.btn-edit:hover{
+    background-color: blueviolet;
+    box-shadow: 2px 3px 10px 3px rgb(51, 91, 248);
 }
