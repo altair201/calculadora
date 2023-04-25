@@ -246,18 +246,25 @@ window.addEventListener('keyup', (evento)=>{
         if(parte1!=""){
             save.push(+parte1)
             parte1=""
-            borrar=save[save.length-1];
-            borrado = parseInt(borrar.toString().slice(0, -1));
-            save[save.length - 1] = borrado; 
-            display.textContent=''
-            save.forEach(element => {
-              display.textContent+= element
+            if(save[save.length-1]<10){
+                save.pop()
+                display.textContent=''
+                save.forEach(element => {
+                display.textContent+= element
             });
-        }else if(save[save.length-1]<9){
+            }else{
+                borrar=save[save.length-1];
+                borrado = parseInt(borrar.toString().slice(0, -1));
+                save[save.length - 1] = borrado; 
+                display.textContent=''
+                save.forEach(element => {
+                display.textContent+= element
+            });
+        }
+        }else if(save[save.length-1]<10){
             save.pop()
             display.textContent=''
             save.forEach(element => {
-                display.textContent+=""
                 display.textContent+= element
             });
         }else if(save[save.length-1]=="+" || save[save.length-1]=="-" || save[save.length-1]=="*" || save[save.length-1]=="/"){
