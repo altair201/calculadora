@@ -5,7 +5,9 @@ const botones=document.querySelector('.container_btns')
 
 let save=[];
 let parte1='';
-
+let borrar;
+let borrado;
+let nenum;
 let total;
 botones.addEventListener('click',(e)=>{
     if(e.target.id=='0'){
@@ -89,7 +91,6 @@ botones.addEventListener('click',(e)=>{
             save.push('/');
         }
     }
-    
     if(e.target.id=='igual'){
         save.push(+parte1)
         for(let i=0; i<save.length; i++){
@@ -113,16 +114,173 @@ botones.addEventListener('click',(e)=>{
                 save.splice(i-1, 3, total)
                 i=0;
             }
-
         }
         display.textContent=total
-        parte1=''
+        parte1='';
         save=[];
         save.push(total);
+        borrar=0;
+        borrado=0;
+        nenum=0;
     }
     if(e.target.id=='limpiar'){
         display.textContent='';
         save=[];
         parte1='';
     }
+})
+window.addEventListener('keyup', (evento)=>{
+    if(evento.key==0){
+        display.textContent+=evento.key;
+        parte1=parte1+'0'
+    }
+    if(evento.key==1){
+        display.textContent+=evento.key;
+        parte1=parte1+'1'
+    }
+    if(evento.key==2){
+        display.textContent+=evento.key;
+        parte1=parte1+'2'
+    }
+    if(evento.key==3){
+        display.textContent+=evento.key;
+        parte1=parte1+'3'
+    }
+    if(evento.key==4){
+        display.textContent+=evento.key;
+        parte1=parte1+'4'
+    }
+    if(evento.key==5){
+        display.textContent+=evento.key;
+        parte1=parte1+'5'
+    }
+    if(evento.key==6){
+        display.textContent+=evento.key;
+        parte1=parte1+'6'
+    }
+    if(evento.key==7){
+        display.textContent+=evento.key;
+        parte1=parte1+'7'
+    }
+    if(evento.key==8){
+        display.textContent+=evento.key;
+        parte1=parte1+'8'
+    }
+    if(evento.key==9){
+        display.textContent+=evento.key;
+        parte1=parte1+'9'
+    }
+    if(evento.key=='+'){
+        display.textContent+="+"
+        if(parte1==''){
+            save.push('+');
+        }else{
+            save.push(+parte1);
+            parte1=''
+            save.push('+');
+        }
+    }
+    if(evento.key=='-'){
+        display.textContent+="-"
+        if(parte1==''){
+            save.push('-');
+        }else{
+            save.push(+parte1);
+            parte1=''
+            save.push('-');
+        }
+    }
+    if(evento.key=='*'){
+        display.textContent+="*"
+        if(parte1==''){
+            save.push('*');
+        }else{
+            save.push(+parte1);
+            parte1=''
+            save.push('*');
+        }
+    }
+    if(evento.key=='/'){
+        display.textContent+="/"
+        if(parte1==''){
+            save.push('/');
+        }else{
+            save.push(+parte1);
+            parte1=''
+            save.push('/');
+        }
+    }
+    if(evento.key=='Enter'){
+        save.push(+parte1)
+        for(let i=0; i<save.length; i++){
+            if(save[i]=='+'){
+                total=save[i-1]+save[i+1];
+                save.splice(i-1, 3, total)
+                i=0;
+            }
+            else if(save[i]=='-'){
+                total=save[i-1]-save[i+1];
+                save.splice(i-1, 3, total)
+                i=0;
+            }
+            else if(save[i]=='*'){
+                total=save[i-1]*save[i+1];
+                save.splice(i-1, 3, total)
+                i=0;
+            }
+            else if(save[i]=='/'){
+                total=save[i-1]/save[i+1];
+                save.splice(i-1, 3, total)
+                i=0;
+            }
+        }
+        display.textContent=total
+        parte1='';
+        save=[];
+        save.push(total);
+        borrar=0;
+        borrado=0;
+        nenum=0;
+    }
+    if(evento.key=='Backspace'){
+        if(parte1!=""){
+            save.push(+parte1)
+            parte1=""
+            borrar=save[save.length-1];
+            borrado = parseInt(borrar.toString().slice(0, -1));
+            save[save.length - 1] = borrado; 
+            display.textContent=''
+            save.forEach(element => {
+              display.textContent+= element
+            });
+        }else if(save[save.length-1]<9){
+            save.pop()
+            display.textContent=''
+            save.forEach(element => {
+                display.textContent+=""
+                display.textContent+= element
+            });
+        }else if(save[save.length-1]=="+" || save[save.length-1]=="-" || save[save.length-1]=="*" || save[save.length-1]=="/"){
+            save.pop()
+            display.textContent=''
+            save.forEach(element => {
+                display.textContent+= element
+              });
+        }
+        else if(save[save.length-1]>9){
+            borrar=save[save.length-1];
+            borrado = parseInt(borrar.toString().slice(0, -1));
+            save[save.length - 1] = borrado;
+            display.textContent=''
+            save.forEach(element => {
+                display.textContent+= element
+            });
+        }
+    }
+    if(evento.key=='Escape'){
+        display.textContent='';
+        save=[];
+        parte1='';
+    }
+   
 })
