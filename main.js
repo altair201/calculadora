@@ -3,12 +3,13 @@ const operando=document.getElementById("operando")
 const display=document.getElementById("display")
 const botones=document.querySelector('.container_btns')
 
-let save=[];
+let save=[0];
 let parte1='';
 let borrar;
 let borrado;
 let nenum;
 let total;
+let falta;
 botones.addEventListener('click',(e)=>{
     if(e.target.id=='0'){
         display.textContent+="0"
@@ -55,6 +56,14 @@ botones.addEventListener('click',(e)=>{
         display.textContent+="+"
         if(parte1==''){
             save.push('+');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('+');
+            parte1=0;
         }else{
             save.push(+parte1);
             parte1=''
@@ -65,6 +74,14 @@ botones.addEventListener('click',(e)=>{
         display.textContent+="-"
         if(parte1==''){
             save.push('-');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('-');
+            parte1=0;
         }else{
             save.push(+parte1);
             parte1=''
@@ -75,6 +92,14 @@ botones.addEventListener('click',(e)=>{
         display.textContent+="*"
         if(parte1==''){
             save.push('*');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('*');
+            parte1=0;
         }else{
             save.push(+parte1);
             parte1=''
@@ -85,6 +110,14 @@ botones.addEventListener('click',(e)=>{
         display.textContent+="/"
         if(parte1==''){
             save.push('/');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('/');
+            parte1=0;
         }else{
             save.push(+parte1);
             parte1=''
@@ -93,6 +126,8 @@ botones.addEventListener('click',(e)=>{
     }
     if(e.target.id=='igual'){
         save.push(+parte1)
+        console.log(save)
+        console.log(parte1)
         for(let i=0; i<save.length; i++){
             if(save[i]=='+'){
                 total=save[i-1]+save[i+1];
@@ -117,7 +152,7 @@ botones.addEventListener('click',(e)=>{
         }
         display.textContent=total
         parte1='';
-        save=[];
+        save=[0];
         save.push(total);
         borrar=0;
         borrado=0;
@@ -125,8 +160,11 @@ botones.addEventListener('click',(e)=>{
     }
     if(e.target.id=='limpiar'){
         display.textContent='';
-        save=[];
+        save=[0];
         parte1='';
+        borrar=0;
+        borrado=0;
+        nenum=0;
     }
 })
 window.addEventListener('keyup', (evento)=>{
@@ -174,6 +212,14 @@ window.addEventListener('keyup', (evento)=>{
         display.textContent+="+"
         if(parte1==''){
             save.push('+');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('+');
+            parte1=0;
         }else{
             save.push(+parte1);
             parte1=''
@@ -184,6 +230,14 @@ window.addEventListener('keyup', (evento)=>{
         display.textContent+="-"
         if(parte1==''){
             save.push('-');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('-');
+            parte1='';
         }else{
             save.push(+parte1);
             parte1=''
@@ -194,6 +248,14 @@ window.addEventListener('keyup', (evento)=>{
         display.textContent+="*"
         if(parte1==''){
             save.push('*');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('*');
+            parte1='';
         }else{
             save.push(+parte1);
             parte1=''
@@ -204,6 +266,14 @@ window.addEventListener('keyup', (evento)=>{
         display.textContent+="/"
         if(parte1==''){
             save.push('/');
+        }else if(parte1!="" && save[save.length-1]!="+"&& save[save.length-1]!="-" && save[save.length-1]!="*" && save[save.length-1]!="/"){
+            falta=save[save.length-1];
+            falta.toString()
+            parte1=falta+parte1
+            save.pop()
+            save.push(+parte1)
+            save.push('/');
+            parte1='';
         }else{
             save.push(+parte1);
             parte1=''
@@ -236,7 +306,7 @@ window.addEventListener('keyup', (evento)=>{
         }
         display.textContent=total
         parte1='';
-        save=[];
+        save=[0];
         save.push(total);
         borrar=0;
         borrado=0;
@@ -250,7 +320,9 @@ window.addEventListener('keyup', (evento)=>{
                 save.pop()
                 display.textContent=''
                 save.forEach(element => {
-                display.textContent+= element
+                    if(element!=0){
+                        display.textContent+= element
+                    }
             });
             }else{
                 borrar=save[save.length-1];
@@ -258,20 +330,26 @@ window.addEventListener('keyup', (evento)=>{
                 save[save.length - 1] = borrado; 
                 display.textContent=''
                 save.forEach(element => {
-                display.textContent+= element
+                    if(element!=0){
+                        display.textContent+= element
+                    }
             });
         }
         }else if(save[save.length-1]<10){
             save.pop()
             display.textContent=''
             save.forEach(element => {
-                display.textContent+= element
+                if(element!=0){
+                    display.textContent+= element
+                }
             });
         }else if(save[save.length-1]=="+" || save[save.length-1]=="-" || save[save.length-1]=="*" || save[save.length-1]=="/"){
             save.pop()
             display.textContent=''
             save.forEach(element => {
-                display.textContent+= element
+                if(element!=0){
+                    display.textContent+= element
+                }
               });
         }
         else if(save[save.length-1]>9){
@@ -280,14 +358,18 @@ window.addEventListener('keyup', (evento)=>{
             save[save.length - 1] = borrado;
             display.textContent=''
             save.forEach(element => {
-                display.textContent+= element
+                if(element!=0){
+                    display.textContent+= element
+                }
             });
         }
     }
     if(evento.key=='Escape'){
         display.textContent='';
-        save=[];
+        save=[0];
         parte1='';
+        borrar=0;
+        borrado=0;
+        nenum=0;
     }
-   
 })

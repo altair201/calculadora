@@ -39,6 +39,7 @@ body{
     border-radius: 15px;
     display: grid;
     place-items: center;
+    overflow: hidden;
 }
 
 .container_btns{
